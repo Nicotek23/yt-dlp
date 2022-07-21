@@ -14,7 +14,7 @@ if MACHINE in ('x86_64', 'AMD64') or ('i' in MACHINE and '86' in MACHINE):
 
 def main():
     opts = parse_options()
-    version = '2022.07.18'('yt_dlp/version.py')
+    version = ('yt_dlp/version.py')
 
     onedir = '--onedir' in opts or '-D' in opts
     if not onedir and '-F' not in opts and '--onefile' not in opts:
