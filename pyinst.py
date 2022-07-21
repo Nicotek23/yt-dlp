@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+from crypt import crypt
+from curses import version
 import os
 import platform
 import sys
 
 from PyInstaller.__main__ import run as run_pyinstaller
+
+import yt_dlp
 
 OS_NAME, MACHINE, ARCH = sys.platform, platform.machine(), platform.architecture()[0][:2]
 if MACHINE in ('x86_64', 'AMD64') or ('i' in MACHINE and '86' in MACHINE):
@@ -97,7 +101,7 @@ def pycryptodome_module():
         import Cryptodome  # noqa: F401
     except ImportError:
         try:
-            import Crypto  # noqa: F401
+            import crypt  # noqa: F401
             print('WARNING: Using Crypto since Cryptodome is not available. '
                   'Install with: pip install pycryptodomex', file=sys.stderr)
             return 'Crypto'
